@@ -36,11 +36,7 @@ https://physionet.org/content/eicu-crd-demo/2.0.1
 * First 24-hour vitals and lab measurements
 * Demographics + clinical indicators
 
-Target Definition:
-
-```
-bad_outcome = ICU_readmit OR ICU_death
-```
+Target Definition: **bad_outcome = ICU_readmit OR ICU_death**
 
 
 ## DATA PREPROCESSING
@@ -157,13 +153,7 @@ Indiviual Patient Example from Deployment App:
 
 ![SHAP Example](images/local_shap_example.png)
 
-Model explanations using SHAP identified key drivers:
-
-* Acute Physiology Score
-* Creatinine
-* BUN
-* Glucose
-* Age
+Model explanations using SHAP identified key drivers for this specific patient.
 
 Interpretation insight:
 
