@@ -61,7 +61,7 @@ Feature engineering:
 
 ## EXPLORATORY DATA ANALYSIS (EDA)
 
-![Outcome Distribution](images/bad_outcome_dist.png)
+![Outcome Distribution](images/target_distribution.png)
 
 ![Baseline Results](images/baseline_results.png)
 
@@ -137,9 +137,9 @@ Both models were saved as deployment artifacts and integrated into a Streamlit d
 
 ## RESULTS
 
-![Main Model Results](images/main_model.png)
+![Main Model Results](images/main_model_results.png)
 
-![Supporting Model Results](images/support.png)
+![Supporting Model Results](images/support_model_results.png)
 
 Key Metrics:
 
@@ -152,7 +152,7 @@ The stacked model outperformed the baseline and improved recall for high-risk pa
 
 ## MODEL INTERPRETATION
 
-![SHAP Example](images/single_shap.png)
+![SHAP Example](images/local_shap_example.png)
 
 Model explanations using SHAP identified key drivers:
 
