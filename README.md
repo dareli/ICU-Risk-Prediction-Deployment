@@ -96,9 +96,10 @@ Why:
 
 Stacked Ensemble:
 
-* Logistic Regression
+* Logistic Regression (meta-model)
 * Support Vector Machine
 * Random Forest
+* CatBoost
 * XGBoost
 
 Purpose:
