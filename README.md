@@ -1,6 +1,6 @@
-# ICU Risk Alert System
+# 🏥 ICU Risk Alert System 
 
-Early Prediction of ICU Bad Outcomes using Machine Learning
+Early Prediction of ICU Bad Outcomes using Machine Learning 
 
 ## BUSINESS PROBLEM / MOTIVATION
 
@@ -29,6 +29,7 @@ https://github.com/dareli/ICU-Outcome-Prediction-Imbalance
 ## DATA
 
 Source: PhysioNet – eICU Collaborative Research Database (Demo)
+
 https://physionet.org/content/eicu-crd-demo/2.0.1
 
 * ~2,500 ICU stays
