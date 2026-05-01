@@ -153,6 +153,8 @@ The stacked model outperformed the baseline and improved recall for high-risk pa
 
 ## MODEL INTERPRETATION
 
+Indiviual Patient Example from Deployment App:
+
 ![SHAP Example](images/local_shap_example.png)
 
 Model explanations using SHAP identified key drivers:
