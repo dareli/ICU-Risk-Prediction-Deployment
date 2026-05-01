@@ -65,32 +65,35 @@ def predict_main(main, row):
 
 
 def predict_support(support, row):
+    
     model = support["model"]
-    X_raw = prepare_row(row, support["feature_columns"])
 
-    if getattr(model, "preprocessor", None) is not None:
-        X = model.preprocessor.transform(X_raw)
+    # STEP 1: force correct columns
+    X = row.reindex(columns=support["feature_columns"], fill_value=0)
+
+    # STEP 2: ensure DataFrame (NOT numpy)
+    X = pd.DataFrame(X, columns=support["feature_columns"])
+
+    # STEP 3: apply preprocessor safely
+    if model.preprocessor is not None:
+        X_processed = model.preprocessor.transform(X)
     else:
-        X = X_raw
+        X_processed = X
 
+    # STEP 4: base model probs
     base_probs = []
-    base_names = list(model.base_models.keys())
+    for name, m in model.base_models.items():
+        prob = m.predict_proba(X_processed)[:, 1][0]
+        base_probs.append(prob)
 
-    for name in base_names:
-        m = model.base_models[name]
-        prob = m.predict_proba(X)[:, 1][0]
-        base_probs.append(safe_clip_prob(prob))
-
+    # STEP 5: meta model
     meta_input = np.array([base_probs])
     prob = model.meta_model.predict_proba(meta_input)[:, 1][0]
-    prob = safe_clip_prob(prob)
-    threshold = float(support["threshold"])
 
     return {
-        "prob": prob,
-        "pred": int(prob >= threshold),
-        "threshold": threshold,
-        "base_probs": dict(zip(base_names, base_probs)),
+        "prob": float(prob),
+        "pred": int(prob >= support["threshold"]),
+        "base_probs": dict(zip(model.base_models.keys(), base_probs))
     }
 
 
